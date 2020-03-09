@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import io.swagger.annotations.ApiModelProperty;
+
 
 
 @Entity
@@ -30,25 +32,29 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
+	@ApiModelProperty(example= "nome do evento ")
 	@NotEmpty(message = "O nome do evento é obrigatorio")
 	private String nomeEvento;
 	
+	@ApiModelProperty(example="id da casa de show")
 	@ManyToOne
 	private Casa casa;
 
+	@ApiModelProperty(example="Pagode")
 	@NotEmpty(message = "O genero é obrigatorio")
 	 private String genero;
 	
+	@ApiModelProperty(example="1000")
 	@JsonProperty("capacidade")
 	@NotNull(message = "O campo capacidade é obrigatorio")
 	 private Integer lotacao;
 	
+	@ApiModelProperty(example="10/10/2020")
 	@NotNull(message ="Data do evento é obrigatorio")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	 private Date dataEvento;
 	 
-	
+	@ApiModelProperty(example="15")
 	@JsonInclude(Include.NON_NULL)
 	 private double valorIngresso;
 	 
